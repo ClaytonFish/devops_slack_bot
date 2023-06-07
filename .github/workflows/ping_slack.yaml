@@ -1,0 +1,14 @@
+name: Ping Slack
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  ping:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: webhook
+        env:
+          SLACK_URL: ${{ secrets.SLACK_URL }} # from github secrets
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hey, this is Clayton'\''s message"}' $SLACK_URL
