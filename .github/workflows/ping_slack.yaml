@@ -11,4 +11,4 @@ jobs:
         env:
           SLACK_URL: ${{ secrets.SLACK_URL }} # from github secrets
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hey, this is Clayton'\''s message"}' $SLACK_URL
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Building Flask app"}' $SLACK_URL
