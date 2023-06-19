@@ -25,4 +25,4 @@ jobs:
           FLASK_IMAGE: us-west3-docker.pkg.dev/${{ secrets.GOOGLE_ID }}/devops-training/cfish/flask:${{ env.commit_sha }}
         run: docker build -t $FLASK_IMAGE .
       - name: docker_push
-        run: docker push -t ${{ steps.docker_build.outputs.env.FLASK_IMAGE }}
+        run: docker push ${{ steps.docker_build.outputs.env.FLASK_IMAGE }}
