@@ -20,7 +20,9 @@ jobs:
           username: _json_key
           password: ${{ secrets.DEVOPS_SERVICE_ACCOUNT }}
       - name: docker_build
+        id: docker_build
         env: 
           FLASK_IMAGE: us-west3-docker.pkg.dev/${{ secrets.GOOGLE_ID }}/devops-training/cfish/flask:${{ env.commit_sha }}
         run: docker build -t $FLASK_IMAGE .
-        
+      - name: docker_push
+        run: docker push -t ${{ jobs.docker_build.env }}
